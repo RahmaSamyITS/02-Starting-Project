@@ -1,0 +1,19 @@
+name: Test Project
+on : push
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v3
+          - name : test react app 
+            run : echo "test react app"
+          - name: install Node js
+            uses: actions/setup-node@v3
+            with:
+                node-version: 18
+          - name: install dependancies 
+            run: npm ci
+          - name: run tests
+            run: npm test 
+        
+        
