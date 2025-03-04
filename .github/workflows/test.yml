@@ -1,5 +1,7 @@
 name: Deploy Project
-on : push
+on : 
+    push :
+     branches : main #branch activity types
 jobs:
     test:
         runs-on: ubuntu-latest
@@ -32,4 +34,11 @@ jobs:
             run: npm run build
           - name: deploy project
             run: echo "Deploying ....."
+          - name: Upload Files
+            uses: actions/upload-artifact@v3
+            with:
+                name: dist-files
+                path: | 
+                    dist
+                    package.json              
         
